@@ -4,9 +4,12 @@ import java.net.*;
 public class WebServer {
 	static Logger logger = new Logger("webserv.txt");
 	static Serverthread[] h = new Serverthread[10]; // thread pool.
+	static ServerSocket welcomeSocket;
 	public static void main(String[] args) throws Exception {
-
-		ServerSocket welcomeSocket = new ServerSocket(80);
+		if (args.length == 0)
+			welcomeSocket = new ServerSocket(80);
+		else
+			welcomeSocket = new ServerSocket(Integer.parseInt(args[0]));
 		logger.println("");
 		logger.println("");
 		logger.println("Server started.");
