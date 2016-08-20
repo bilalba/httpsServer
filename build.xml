@@ -1,0 +1,25 @@
+<project>
+
+    <target name="clean">
+        <delete dir="build"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="build/classes"/>
+        <javac srcdir="SimplehttpServer/" destdir="build/classes"/>
+    </target>
+
+    <target name="jar">
+        <mkdir dir="build/jar"/>
+        <jar destfile="build/jar/WebServer.jar" basedir="build/classes">
+            <manifest>
+                <attribute name="Main-Class" value="webserver.WebServer"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run">
+        <java jar="build/jar/WebServer.jar" fork="true"/>
+    </target>
+
+</project>
